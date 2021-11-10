@@ -39,7 +39,13 @@ class _PostListPageState extends StateMVC {
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(
                 builder: (context) => const PostDetailPage()
-            ));
+            )).then((value) {
+              if (value is PostAddSuccess) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("Пост был успешно добавлен"))
+                );
+              }
+            });
           },
       ),
     );
