@@ -1,9 +1,9 @@
-import 'package:first_flutter/pages/tab_navigator.dart';
+import 'package:first_flutter/pages/navigation/tab_navigator.dart';
 import 'package:flutter/material.dart';
 
-import 'bottom_navigation.dart';
-import 'pony_list_page.dart';
-import '../models/tab.dart';
+import '../navigation/bottom_navigation.dart';
+import '../pony_list_page.dart';
+import '../../models/tab.dart';
 
 class HomePage extends StatefulWidget {
 

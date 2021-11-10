@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/tab.dart';
+import '../../models/tab.dart';
 
 const Map<TabItem, MyTab> tabs = {
   TabItem.POSTS : MyTab(name: "Posts", color: Colors.red, icon: Icons.layers),
