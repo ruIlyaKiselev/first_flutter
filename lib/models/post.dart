@@ -1,5 +1,9 @@
-class Post {
+import 'package:json_annotation/json_annotation.dart';
+import 'package:retrofit/retrofit.dart';
+import 'package:dio/dio.dart';
 
+@JsonSerializable()
+class Post {
   final int _userId;
   final int _id;
   final String _title;
@@ -19,11 +23,13 @@ class Post {
 
 class PostList {
   final List<Post> posts = [];
+
   PostList.fromJson(List<dynamic> jsonItems) {
     for (var jsonItem in jsonItems) {
       posts.add(Post.fromJson(jsonItem));
     }
   }
+
 }
 
 abstract class PostResult {}
