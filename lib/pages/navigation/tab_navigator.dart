@@ -1,9 +1,9 @@
-import 'package:first_flutter/pages/post_list_page.dart';
-import 'package:first_flutter/pages/todo_list_page.dart';
+import 'package:first_flutter/pages/post/post_list_page.dart';
+import 'package:first_flutter/pages/todo/todo_list_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/tab.dart';
-import '../album_list_page.dart';
+import '../album/album_list_page.dart';
 
 class TabNavigator extends StatelessWidget {
 

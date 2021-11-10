@@ -1,5 +1,6 @@
 import 'package:first_flutter/controllers/post_controller.dart';
 import 'package:first_flutter/models/post.dart';
+import 'package:first_flutter/pages/post/post_add_page.dart';
 import 'package:first_flutter/pages/post/post_list_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,15 @@ class _PostListPageState extends StateMVC {
         appBar: AppBar(
           title: const Text("Post List Page"),
         ),
-        body: _buildContent()
+        body: _buildContent(),
+        floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.add),
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(
+                builder: (context) => const PostDetailPage()
+            ));
+          },
+      ),
     );
   }
 
