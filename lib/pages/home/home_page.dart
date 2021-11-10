@@ -1,9 +1,10 @@
+import 'package:first_flutter/controllers/home_controller.dart';
 import 'package:first_flutter/pages/navigation/tab_navigator.dart';
 import 'package:flutter/material.dart';
+import 'package:mvc_pattern/mvc_pattern.dart';
 
-import '../navigation/bottom_navigation.dart';
-import '../pony_list_page.dart';
 import '../../models/tab.dart';
+import '../navigation/bottom_navigation.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -13,18 +14,12 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends StateMVC {
 
-  final _navigatorKeys = {
-    TabItem.POSTS: GlobalKey<NavigatorState>(),
-    TabItem.ALBUMS: GlobalKey<NavigatorState>(),
-    TabItem.TODOS: GlobalKey<NavigatorState>(),
-  };
+  HomeController? _homeController;
 
-  var _currentTab = TabItem.POSTS;
-
-  void _selectTab(TabItem tabItem) {
-    setState(() => _currentTab = tabItem);
+  _HomePageState() : super(HomeController()) {
+    _homeController = HomeController.controller;
   }
 
   @override
@@ -33,11 +28,11 @@ class _HomePageState extends State<HomePage> {
     return WillPopScope(
 
       onWillPop: () async {
-        if (_currentTab != TabItem.POSTS) {
-          if (_currentTab == TabItem.TODOS) {
-            _selectTab(TabItem.ALBUMS);
+        if (_homeController?.currentTab != TabItem.posts) {
+          if (_homeController?.currentTab == TabItem.todos) {
+            _homeController?.selectTab(TabItem.albums);
           } else {
-            _selectTab(TabItem.POSTS);
+            _homeController?.selectTab(TabItem.posts);
           }
           return false;
         } else {
@@ -48,14 +43,14 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
 
         body: Stack(children: <Widget>[
-          _buildOffstageNavigator(TabItem.POSTS),
-          _buildOffstageNavigator(TabItem.ALBUMS),
-          _buildOffstageNavigator(TabItem.TODOS),
+          _buildOffstageNavigator(TabItem.posts),
+          _buildOffstageNavigator(TabItem.albums),
+          _buildOffstageNavigator(TabItem.todos),
         ]),
 
         bottomNavigationBar: MyBottomNavigation(
-          currentTab: _currentTab,
-          onSelectTab: _selectTab,
+          currentTab: _homeController!.currentTab,
+          onSelectTab: _homeController!.selectTab,
         ),
       ),
     );
@@ -66,10 +61,10 @@ class _HomePageState extends State<HomePage> {
       // Offstage работает следующим образом:
       // если это не текущий выбранный элемент
       // в нижнем меню, то мы его скрываем
-      offstage: _currentTab != tabItem,
+      offstage: _homeController?.currentTab != tabItem,
       // TabNavigator мы создадим позже
       child: TabNavigator(
-        navigatorKey: _navigatorKeys[tabItem]!,
+        navigatorKey: _homeController!.navigatorKeys[tabItem] as GlobalKey<NavigatorState>,
         tabItem: tabItem,
       ),
     );

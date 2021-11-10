@@ -21,9 +21,9 @@ class TabNavigator extends StatelessWidget {
 
         Widget currentPage; // = const PonyListPage();
 
-        if (tabItem == TabItem.POSTS) {
+        if (tabItem == TabItem.posts) {
           currentPage = const PostListPage();
-        } else if (tabItem == TabItem.ALBUMS) {
+        } else if (tabItem == TabItem.albums) {
           currentPage = const AlbumListPage();
         } else {
           currentPage = const TodoListPage();

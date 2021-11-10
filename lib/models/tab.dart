@@ -15,7 +15,7 @@ class MyTab {
 }
 
 enum TabItem {
-  POSTS,
-  ALBUMS,
-  TODOS
+  posts,
+  albums,
+  todos
 }

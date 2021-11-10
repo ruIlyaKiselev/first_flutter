@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../../models/tab.dart';
 
 const Map<TabItem, MyTab> tabs = {
-  TabItem.POSTS : MyTab(name: "Posts", color: Colors.red, icon: Icons.layers),
-  TabItem.ALBUMS : MyTab(name: "Albums", color: Colors.blue, icon: Icons.image),
-  TabItem.TODOS : MyTab(name: "Todos", color: Colors.green, icon: Icons.edit)
+  TabItem.posts : MyTab(name: "Posts", color: Colors.red, icon: Icons.layers),
+  TabItem.albums : MyTab(name: "Albums", color: Colors.blue, icon: Icons.image),
+  TabItem.todos : MyTab(name: "Todos", color: Colors.green, icon: Icons.edit)
 };
 
 class MyBottomNavigation extends StatelessWidget {
@@ -26,9 +26,9 @@ class MyBottomNavigation extends StatelessWidget {
         currentIndex: currentTab.index,
 
         items: [
-          _buildItem(TabItem.POSTS),
-          _buildItem(TabItem.ALBUMS),
-          _buildItem(TabItem.TODOS),
+          _buildItem(TabItem.posts),
+          _buildItem(TabItem.albums),
+          _buildItem(TabItem.todos),
         ],
 
         onTap: (index) => onSelectTab(
