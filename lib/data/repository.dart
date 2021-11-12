@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:first_flutter/models/photo.dart';
 import 'package:first_flutter/models/post.dart';
 import 'package:http/http.dart' as http;
 
@@ -29,6 +30,19 @@ class Repository {
       return PostAddSuccess();
     } else {
       return PostAddFailure();
+    }
+  }
+
+  Future<PhotoList> fetchPhotos() async {
+    final url = Uri.parse("$serverAddress/photos");
+
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+
+      return PhotoList.fromJson(json.decode(response.body));
+    } else {
+      throw Exception("failed request");
     }
   }
 }
