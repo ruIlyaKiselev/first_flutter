@@ -29,5 +29,18 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
+
+  fonts:
+    - family: Oswald
+      fonts:
+        - asset: fonts/Oswald-Regular.ttf
+          style: normal
+        - asset: fonts/Oswald-Bold.ttf
+          style: normal
+          weight: 700
+        - asset: fonts/Oswald-Light.ttf
+          style: normal
+          weight: 300
+
   assets:
     - images/

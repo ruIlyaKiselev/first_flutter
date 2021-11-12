@@ -1,3 +1,4 @@
+import 'package:first_flutter/resources/theme.dart';
 import 'package:flutter/material.dart';
 import 'pages/home/home_page.dart';
 
@@ -11,9 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Json Placeholder App',
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
+        theme: usualTheme,
       home: const HomePage()
     );
   }
